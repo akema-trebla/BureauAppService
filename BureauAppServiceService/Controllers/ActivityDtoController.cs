@@ -19,6 +19,7 @@ namespace BureauAppServiceService.Controllers
             DomainManager = new CustomEntityDomainManager<ActivityDto, Activity, int>(context, Request, key => ce => ce.ActivityID == key);
         }
 
+
         // GET tables/ActivityDto
         public IQueryable<ActivityDto> GetAllActivityDto()
         {

@@ -28,30 +28,30 @@ namespace BureauAppServiceService
         {
             HttpConfiguration config = new HttpConfiguration();
 
-            //AutoMapper.Mapper.Initialize(cfg =>
-            //{
-            //    // Define a map from the client type to the database type. Used when inserting and updating data.
-            //    cfg.CreateMap<ActivityDto, Activity>()
-            //        .ForMember(ce => ce.ActivityID,
-            //        map => map.MapFrom(dto => int.Parse(dto.Id))
-            //        );
-            //    cfg.CreateMap<ProjectTaskDto, ProjectTask>()
-            //        .ForMember(ce => ce.TaskID,
-            //        map => map.MapFrom(dto => int.Parse(dto.Id))
-            //        );
+            AutoMapper.Mapper.Initialize(cfg =>
+            {
+                    // Define a map from the client type to the database type. Used when inserting and updating data.
+                cfg.CreateMap<ActivityDto, Activity>()
+                        .ForMember(ce => ce.ActivityID,
+                        map => map.MapFrom(dto => int.Parse(dto.Id))
+                        );
+                cfg.CreateMap<ProjectTaskDto, ProjectTask>()
+                        .ForMember(ce => ce.TaskID,
+                        map => map.MapFrom(dto => int.Parse(dto.Id))
+                        );
 
-            //    // Define a map from the database type User to client type UserDto. Used when getting data.
-            //    cfg.CreateMap<Activity, ActivityDto>()
-            //         .ForMember(dto => dto.Id, 
-            //         map => map.MapFrom(ce => ce.ActivityID.ToString())
-            //         );
-            //    cfg.CreateMap<ProjectTask, ProjectTaskDto>()
-            //         .ForMember(dto => dto.Id, 
-            //         map => map.MapFrom(ce => ce.TaskID.ToString())
-            //         );
-            //    ;
-                 
-            //});
+                    // Define a map from the database type User to client type UserDto. Used when getting data.
+                cfg.CreateMap<Activity, ActivityDto>()
+                         .ForMember(dto => dto.Id, 
+                         map => map.MapFrom(ce => ce.ActivityID.ToString())
+                         );
+                cfg.CreateMap<ProjectTask, ProjectTaskDto>()
+                         .ForMember(dto => dto.Id, 
+                         map => map.MapFrom(ce => ce.TaskID.ToString())
+                         );
+                    ;
+
+            });
             // Using X-ZUMO-AUTH 
             //ConfigureCustomAuth(app);
 
@@ -117,7 +117,7 @@ namespace BureauAppServiceService
 
         private void ConfigureOAuthTokenConsumption(IAppBuilder app)
         {
-            var issuer = "http://localhost:59822";
+            var issuer = "http://localhost:50271";
             string audienceId = ConfigurationManager.AppSettings["as:AudienceId"];
             byte[] audienceSecret = TextEncodings.Base64Url.Decode(ConfigurationManager.AppSettings["as:AudienceSecret"]);
 
@@ -162,7 +162,7 @@ namespace BureauAppServiceService
                 TokenEndpointPath = new PathString("/oauth/token"),
                 AccessTokenExpireTimeSpan = TimeSpan.FromDays(1),
                 Provider = new CustomOAuthProvider(),
-                AccessTokenFormat = new CustomJwtFormat("http://localhost:59822")
+                AccessTokenFormat = new CustomJwtFormat("http://localhost:50271")
             };
 
             // OAuth 2.0 Bearer Access Token Generation
