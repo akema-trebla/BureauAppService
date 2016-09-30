@@ -51,11 +51,6 @@ namespace BureauAppServiceService.Models
         [TableColumn(TableColumnType.Deleted)]
         public bool Deleted { get; set; }
 
-        //[Index]
-        //[TableColumn(TableColumnType.Id)]
-        //[MaxLength(36)]
-        //public string Id { get; set; }
-
         [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
         [TableColumn(TableColumnType.UpdatedAt)]
         public DateTimeOffset? UpdatedAt { get; set; }

@@ -36,6 +36,6 @@ namespace BureauAppServiceService.Models
 
         public System.Data.Entity.DbSet<BureauAppServiceService.Models.Activity> Activities { get; set; }
         public System.Data.Entity.DbSet<BureauAppServiceService.Models.ProjectTask> ProjectTasks { get; set; }
-
+        public System.Data.Entity.DbSet<BureauAppServiceService.Models.Payrollrun> Payrollrun { get; set; }
     }
 }

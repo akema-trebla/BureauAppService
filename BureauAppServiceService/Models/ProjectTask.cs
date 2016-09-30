@@ -37,18 +37,11 @@ namespace BureauAppServiceService.Models
 
         public string TaskStatus { get; set; }
 
-        //[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        //[Index]
         [TableColumn(TableColumnType.CreatedAt)]
         public DateTimeOffset? CreatedAt { get; set; }
 
         [TableColumn(TableColumnType.Deleted)]
         public bool Deleted { get; set; }
-
-        //[Index]
-        //[TableColumn(TableColumnType.Id)]
-        //[MaxLength(36)]
-        //public string Id { get; set; }
 
         [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
         [TableColumn(TableColumnType.UpdatedAt)]
